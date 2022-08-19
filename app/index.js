@@ -2,7 +2,6 @@ import { loadRows, setBookPrice } from '../lib/notion.js';
 import { getBookAverageMarketPrice } from '../lib/web.js';
 import { getOrThrow } from '../lib/config.js';
 import CliProgress, { Presets } from 'cli-progress';
-import { cache } from '../lib/cache.js';
 
 const progress = new CliProgress.SingleBar({}, Presets.shades_classic);
 
@@ -22,10 +21,7 @@ const main = async () => {
     // load actual average price
     const price = await getBookAverageMarketPrice(row.isbn, new Date(row.pubYear, 1));
     
-    if (!cache.getSync(row.isbn)) {
-      // write price into row
-      await setBookPrice(row.pageId, price);
-    }
+    await setBookPrice(row.pageId, price);
 
     // update progress
     currentRow += 1;
