@@ -1,0 +1,14 @@
+{
+  "name": "notion-lib-price",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "type": "module",
+  "dependencies": {
+    "@notionhq/client": "^2.1.1",
+    "cheerio": "^1.0.0-rc.12",
+    "cli-progress": "^3.11.2",
+    "got": "^12.3.1",
+    "persistent-cache": "^1.1.2"
+  }
+}
